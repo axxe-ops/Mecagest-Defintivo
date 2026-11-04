@@ -1,0 +1,206 @@
+﻿using BE;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace DAL
+{
+    public class MP_USUARIO : MAPPER<BE.USUARIO>
+    {
+        public override void Eliminar(USUARIO obj)
+        {
+            throw new NotImplementedException();
+        }
+
+        public override void Insertar(USUARIO obj)
+        {
+            throw new NotImplementedException();
+        }
+        public override void Modificar(USUARIO obj)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id", obj.Id));
+            parametros.Add(acceso.CrearParametro("nombre", obj.Nombre));
+
+            try
+            {
+                acceso.Abrir();
+                acceso.Escribir("sp_ModificarUsuario", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al modificar usuario", ex);
+            }
+        }
+
+        public override List<USUARIO> Listar()
+        {
+            List<USUARIO> listaUsuarios = new List<USUARIO>();
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_ListarUsuarios", null);
+                acceso.Cerrar();
+
+                foreach (DataRow fila in dt.Rows)
+                {
+                    USUARIO u = new USUARIO();
+                    u.Id = Convert.ToInt32(fila["id"]);
+                    u.Nombre = fila["nombre"].ToString();
+                    if (fila["dvh"] != DBNull.Value)
+                    {
+                        u.Dvh = Convert.ToInt32(fila["dvh"]);
+                    }
+                    else
+                    {
+                        u.Dvh = 0; // Si es nulo en la BD, lo tratamos como 0
+                    }
+
+                    listaUsuarios.Add(u);
+                }
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al intentar listar los usuarios desde la base de datos.", ex);
+            }
+
+            return listaUsuarios;
+        }
+
+
+
+        public BE.USUARIO ValidarUsuario(USUARIO usuario)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("nombre", usuario.Nombre));
+            parametros.Add(acceso.CrearParametro("contrasena", usuario.Contrasena));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_ValidarUsuario", parametros);
+                acceso.Cerrar();
+
+                if (dt.Rows.Count == 1)
+                {
+                    BE.USUARIO usuarioEncontrado = new BE.USUARIO();
+                    usuarioEncontrado.Id = Convert.ToInt32(dt.Rows[0]["id"]);
+                    usuarioEncontrado.Nombre = dt.Rows[0]["nombre"].ToString();
+                    usuarioEncontrado.Contrasena = dt.Rows[0]["contrasena"].ToString();
+
+                    return usuarioEncontrado;
+                }
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al conectar con la base de datos durante la validación.", ex);
+            }
+            return null;
+        }
+
+        public IDIOMA ObtenerIdiomaPreferido(USUARIO usuarioActual)
+        {
+            IDIOMA idioma = null;
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@id_usuario", usuarioActual.Id));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_ObtenerIdiomaPorUsuario", parametros);
+                acceso.Cerrar();
+
+                if (dt.Rows.Count > 0)
+                {
+                    idioma = new IDIOMA();
+                    idioma.Id = Convert.ToInt32(dt.Rows[0]["id_idioma"]);
+                    idioma.Nombre = dt.Rows[0]["nombre_idioma"].ToString();
+                }
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al obtener el idioma preferido del usuario.", ex);
+            }
+
+            return idioma;
+        }
+
+        public void ActualizarIdiomaPreferido(USUARIO usuarioActual, IDIOMA nuevoIdioma)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_usuario", usuarioActual.Id));
+            parametros.Add(acceso.CrearParametro("id_idioma", nuevoIdioma.Id));
+
+            try
+            {
+                acceso.Abrir();
+                acceso.Escribir("sp_ActualizarIdiomaPreferido", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al persistir la preferencia de idioma.", ex);
+            }
+        }
+
+        public USUARIO ObtenerUsuarioPorId(int idUsuarioAfectado)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("id_usuario", idUsuarioAfectado));
+
+            try
+            {
+                acceso.Abrir();
+                DataTable dt = acceso.Leer("sp_Usuario_ObtenerPorId", parametros);
+                acceso.Cerrar();
+
+                if (dt.Rows.Count > 0)
+                {
+                    DataRow row = dt.Rows[0];
+                    USUARIO usuario = new USUARIO();
+                    usuario.Id = Convert.ToInt32(row["Id"]);
+                    usuario.Nombre = row["Nombre"].ToString();
+                    return usuario;
+                }
+                return null;
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al obtener usuario para restauración: " + ex.Message);
+            }
+        }
+
+
+        //------------ Digitos Verificadores ----------
+        public void ActualizarDVH(USUARIO usuario)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>();
+            parametros.Add(acceso.CrearParametro("@IdUsuario", usuario.Id));
+            parametros.Add(acceso.CrearParametro("@NuevoDVH", usuario.Dvh));
+
+            try
+            {
+                acceso.Abrir();
+                int res = acceso.Escribir("sp_ActualizarUsuarioDVH", parametros);
+                acceso.Cerrar();
+            }
+            catch (Exception ex)
+            {
+                acceso.Cerrar();
+                throw new Exception("Error al actualizar Digitos verificadores Horizontales (DVH)");
+            }
+        }
+    }
+}
