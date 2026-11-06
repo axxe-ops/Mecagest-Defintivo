@@ -191,5 +191,25 @@ namespace GUI
                 txtEstadoOT.Text = otSeleccionada.Estado;
             }
         }
+
+        private void btnRegistrarEgreso_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                gestorEstadia.RegistrarEgresoVehiculo(otSeleccionada);
+
+                MessageBox.Show("Egreso físico registrado con éxito.", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                
+                txtEstadoOT.Text = null;
+                txtNumeroFicha.Clear();
+                txtClienteEgreso.Clear();
+                txtVehiculoEgreso.Clear();
+                otSeleccionada = null;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Stop);
+            }
+        }
     }
 }

@@ -439,6 +439,7 @@
             this.btnRegistrarEgreso.TabIndex = 0;
             this.btnRegistrarEgreso.Text = "Registrar Egreso";
             this.btnRegistrarEgreso.UseVisualStyleBackColor = true;
+            this.btnRegistrarEgreso.Click += new System.EventHandler(this.btnRegistrarEgreso_Click);
             // 
             // gbOrdenTrabajo
             // 

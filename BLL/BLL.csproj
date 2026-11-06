@@ -41,6 +41,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="CLIENTE_BLL.cs" />
     <Compile Include="GESTOR_ESTADIA.cs" />
     <Compile Include="PERMISO_BLL.cs" />
     <Compile Include="USUARIO_BLL.cs" />

@@ -33,7 +33,7 @@ namespace GUI
 
 
 
-        //---------------- BOTONES ------------------------------------
+        //-------------------- BOTONES ------------------------------------
         
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         { 
@@ -43,6 +43,15 @@ namespace GUI
                 frm.Close();
             }
         }
+
+        //---- GESTIONAR ESTADIA --
+        private void reservarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegistrarEstadia frm = new frmRegistrarEstadia();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+
         private void gestiónBitacoraToolStripMenuItem_Click(object sender, EventArgs e)
         {
             // Gestion Bitacora
@@ -156,7 +165,7 @@ namespace GUI
             // MenuStrip - Items principales y desplegables
             menúToolStripMenuItem.Text = traductor.ObtenerTraduccion("menúToolStripMenuItem");
             gestionTurnosToolStripMenuItem.Text = traductor.ObtenerTraduccion("gestionTurnosToolStripMenuItem");
-            reservarTurnoToolStripMenuItem.Text = traductor.ObtenerTraduccion("reservarTurnoToolStripMenuItem");
+            fichaIngreso_EgresoToolStripMenuItem.Text = traductor.ObtenerTraduccion("reservarTurnoToolStripMenuItem");
             agendaToolStripMenuItem.Text = traductor.ObtenerTraduccion("agendaToolStripMenuItem");
             gestionServiciosToolStripMenuItem.Text = traductor.ObtenerTraduccion("gestionServiciosToolStripMenuItem");
             ordenesDeTrabajoToolStripMenuItem.Text = traductor.ObtenerTraduccion("ordenesDeTrabajoToolStripMenuItem");
@@ -174,8 +183,6 @@ namespace GUI
             gestionPermisosToolStripMenuItem1.Text = traductor.ObtenerTraduccion("gestionPermisosToolStripMenuItem1");
             gestionIdiomasToolStripMenuItem1.Text = traductor.ObtenerTraduccion("gestionIdiomasToolStripMenuItem1");
         }
-
-
 
         private void frmPrincipal_FormClosing(object sender, FormClosingEventArgs e)
         {
