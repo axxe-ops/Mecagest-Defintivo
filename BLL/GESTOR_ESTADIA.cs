@@ -12,6 +12,8 @@ namespace BLL
         DAL.MP_CLIENTE mapperCliente = new DAL.MP_CLIENTE();
         DAL.MP_VEHICULO mapperVehiculo = new DAL.MP_VEHICULO();
         DAL.MP_FICHA mapperFicha = new DAL.MP_FICHA();
+        DAL.MP_ORDEN_TRABAJO mapperOT = new DAL.MP_ORDEN_TRABAJO();
+        
 
         //-------------- GESTION CLIENTE ---------
 
@@ -81,6 +83,28 @@ namespace BLL
             nuevaFicha.Vehiculo = vehiculoSeleccionado;
             
             mapperFicha.Insertar(nuevaFicha);
+        }
+        public void RegistrarEgresoVehiculo(BE.ORDEN_TRABAJO ordenTrabajoSeleccionada)
+        {
+            if (ordenTrabajoSeleccionada == null)
+            {
+                throw new Exception("Debe seleccionar una Orden de Trabajo para registrar el egreso.");
+            }
+
+            if (ordenTrabajoSeleccionada.Estado != "Pagada")
+            {
+                throw new Exception("No se puede registrar el egreso porque la Orden de Trabajo no está Pagada.");
+            }
+
+            ordenTrabajoSeleccionada.Estado = "Finalizado y Entregado";
+
+            if (ordenTrabajoSeleccionada.Ficha != null)
+            {
+                ordenTrabajoSeleccionada.Ficha.FechaEgreso = DateTime.Now;
+                mapperFicha.ActualizarFechaEgreso(ordenTrabajoSeleccionada.Ficha); 
+            }
+
+            mapperOT.ActualizarEstadoOT(ordenTrabajoSeleccionada);
         }
     }
 }

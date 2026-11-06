@@ -19,13 +19,14 @@ namespace DAL
         {
             List<SqlParameter> parametros = new List<SqlParameter>
             {
+                acceso.CrearParametro("@NumeroFicha", obj.NumeroFicha),
                 acceso.CrearParametro("@FechaIngreso", obj.FechaIngreso),
-                acceso.CrearParametro("@DescripcionCliente", obj.DescripcionCliente),                
+                acceso.CrearParametro("@DescripcionCliente", obj.DescripcionCliente),
                 acceso.CrearParametro("@Vehiculo_Patente", obj.Vehiculo.Patente)
             };
 
             acceso.Abrir();
-            object resultado = acceso.EjecutarEscalar("SP_InsertarFicha", parametros);
+            object resultado = acceso.EjecutarEscalar("sp_InsertarFicha", parametros);
             acceso.Cerrar();
 
             if (resultado != null && resultado != DBNull.Value)
@@ -42,6 +43,20 @@ namespace DAL
         public override void Modificar(FICHA obj)
         {
             throw new NotImplementedException();
+        }
+
+        public void ActualizarFechaEgreso(FICHA obj)
+        {
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@NumeroFicha", obj.NumeroFicha),
+                acceso.CrearParametro("@FechaEgreso", obj.FechaEgreso)
+            };
+
+            acceso.Abrir();
+            int res = acceso.Escribir("sp_ActualizarFicha_FechaEgreso", parametros);
+            acceso.Cerrar();
+
         }
     }
 }

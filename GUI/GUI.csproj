@@ -82,6 +82,12 @@
     <Compile Include="frmPermisos.Designer.cs">
       <DependentUpon>frmPermisos.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmRegistrarEstadia.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRegistrarEstadia.Designer.cs">
+      <DependentUpon>frmRegistrarEstadia.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmSeguridad.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -113,6 +119,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="frmPermisos.resx">
       <DependentUpon>frmPermisos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRegistrarEstadia.resx">
+      <DependentUpon>frmRegistrarEstadia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeguridad.resx">
       <DependentUpon>frmSeguridad.cs</DependentUpon>

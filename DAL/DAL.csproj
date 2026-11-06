@@ -49,6 +49,7 @@
     <Compile Include="MP_CLIENTE.cs" />
     <Compile Include="MP_FICHA.cs" />
     <Compile Include="MP_IDIOMA.cs" />
+    <Compile Include="MP_ORDEN_TRABAJO.cs" />
     <Compile Include="MP_PERMISO.cs" />
     <Compile Include="MP_TRADUCCION.cs" />
     <Compile Include="MP_USUARIO.cs" />

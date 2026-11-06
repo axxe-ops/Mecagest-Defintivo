@@ -56,10 +56,7 @@ namespace DAL
             if (tabla.Rows.Count > 0)
             {
                 DataRow fila = tabla.Rows[0];
-
-                // Instanciamos un Cliente "cascarón" solo con el Id para mantener la referencia
-                // La capa BLL (Gestor) luego puede usar este Id para buscar los datos completos del dueño si hace falta.
-                CLIENTE dueño = new CLIENTE(0, "", "", "", 0);
+                CLIENTE dueño = new CLIENTE(0, "", "", "", "");
                 dueño.Id = Convert.ToInt32(fila["Cliente_Id"]);
 
                 VEHICULO vehiculo = new VEHICULO(
