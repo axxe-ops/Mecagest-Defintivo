@@ -72,6 +72,9 @@ namespace DAL
                     dueño
                 );
 
+                vehiculo.Id = Convert.ToInt32(fila["Id"]);
+
+
                 return vehiculo;
             }
             return null;

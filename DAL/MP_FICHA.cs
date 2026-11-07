@@ -19,7 +19,6 @@ namespace DAL
         {
             List<SqlParameter> parametros = new List<SqlParameter>
             {
-                acceso.CrearParametro("@NumeroFicha", obj.NumeroFicha),
                 acceso.CrearParametro("@FechaIngreso", obj.FechaIngreso),
                 acceso.CrearParametro("@DescripcionCliente", obj.DescripcionCliente),
                 acceso.CrearParametro("@Vehiculo_Id", obj.Vehiculo.Id)
