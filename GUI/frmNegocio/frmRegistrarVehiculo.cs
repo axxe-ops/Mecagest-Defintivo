@@ -31,16 +31,39 @@ namespace GUI.frmNegocio
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtPatente.Text) ||
+                    string.IsNullOrWhiteSpace(txtMarca.Text) ||
+                    string.IsNullOrWhiteSpace(txtModelo.Text) ||
+                    string.IsNullOrWhiteSpace(txtAnio.Text))
+                {
+                    throw new Exception("Todos los datos del vehículo son obligatorios.");
+                }
+
+                if (clienteSeleccionado == null)
+                {
+                    throw new Exception("Debe buscar y confirmar un cliente dueño antes de registrar el vehículo.");
+                }
+
                 string patente =txtPatente.Text;
                 string marca = txtMarca.Text;
                 string modelo = txtModelo.Text;
-                string anio = txtAnio.Text;
+                int anio = int.Parse(txtAnio.Text);
                 
 
 
-                VEHICULO nuevoVehiculo = new VEHICULO(patente, marca, modelo, anio, );
-
+                VEHICULO nuevoVehiculo = new VEHICULO(patente, marca, modelo, anio, clienteSeleccionado);
                 gestorEstadia.RegistrarNuevoVehiculo(nuevoVehiculo);
+
+                MessageBox.Show("Vehículo registrado correctamente.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtPatente.Clear();
+                txtMarca.Clear();
+                txtModelo.Clear();
+                txtAnio.Clear();
+                txtDueño.Clear();
+                clienteSeleccionado = null;
+                dgvClientes.DataSource = null;
+
             }
             catch (Exception ex)
             {

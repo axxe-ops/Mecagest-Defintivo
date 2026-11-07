@@ -28,8 +28,13 @@ namespace DAL
             };
 
             acceso.Abrir();
-            acceso.Escribir("sp_InsertarVehiculo", parametros);
+            object id = acceso.EjecutarEscalar("sp_InsertarVehiculo", parametros);
             acceso.Cerrar();
+
+            if (id != null && id != DBNull.Value)
+            {
+                obj.Id = Convert.ToInt32(id);
+            }
         }
 
         public override List<VEHICULO> Listar()

@@ -22,7 +22,7 @@ namespace DAL
                 acceso.CrearParametro("@NumeroFicha", obj.NumeroFicha),
                 acceso.CrearParametro("@FechaIngreso", obj.FechaIngreso),
                 acceso.CrearParametro("@DescripcionCliente", obj.DescripcionCliente),
-                acceso.CrearParametro("@Vehiculo_Patente", obj.Vehiculo.Patente)
+                acceso.CrearParametro("@Vehiculo_Id", obj.Vehiculo.Id)
             };
 
             acceso.Abrir();

@@ -17,6 +17,13 @@ namespace BE
             Dueño = clienteDueño;
         }
 
+        private int id;
+        public int Id
+        {
+            get { return id; }
+            set { id = value; }
+        }
+
 
         private CLIENTE dueño;
         public CLIENTE Dueño

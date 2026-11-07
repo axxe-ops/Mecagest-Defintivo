@@ -30,20 +30,33 @@ namespace GUI.frmNegocio
         {
             try
             {
+                if (string.IsNullOrWhiteSpace(txtDNI.Text) ||
+                    string.IsNullOrWhiteSpace(txtNombre.Text) ||
+                    string.IsNullOrWhiteSpace(txtApellido.Text) ||
+                    string.IsNullOrWhiteSpace(txtTelefono.Text) ||
+                    string.IsNullOrWhiteSpace(txtCorreo.Text))
+                {
+                    throw new Exception("Todos los campos son obligatorios. Por favor, complete la información.");
+                }
+
+
                 int dni = int.Parse(txtDNI.Text);
                 string nombre = txtNombre.Text;
                 string apellido = txtApellido.Text;
                 string telefono = txtTelefono.Text;
                 string correo = txtCorreo.Text;
 
-                if (string.IsNullOrWhiteSpace(dni.ToString()))
-                {
-
-                }
 
                 CLIENTE nuevoCliente = new CLIENTE(dni, nombre, apellido, correo, telefono);
-
                 gestorEstadia.RegistrarNuevoCliente(nuevoCliente);
+
+                MessageBox.Show("Cliente registrado correctamente.", "Registro Exitoso", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                txtDNI.Clear();
+                txtNombre.Clear();
+                txtApellido.Clear();
+                txtTelefono.Clear();
+                txtCorreo.Clear();
             }
             catch (Exception ex) 
             {

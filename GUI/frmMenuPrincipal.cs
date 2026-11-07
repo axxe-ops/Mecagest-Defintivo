@@ -1,4 +1,5 @@
 ﻿using BE;
+using GUI.frmNegocio;
 using SERVICE;
 using System;
 using System.Collections.Generic;
@@ -48,6 +49,18 @@ namespace GUI
         private void reservarTurnoToolStripMenuItem_Click(object sender, EventArgs e)
         {
             frmRegistrarEstadia frm = new frmRegistrarEstadia();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+        private void agendaToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegistrarCliente frm = new frmRegistrarCliente();
+            frm.MdiParent = this;
+            frm.Show();
+        }
+        private void registrarVehiculoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            frmRegistrarVehiculo frm = new frmRegistrarVehiculo();
             frm.MdiParent = this;
             frm.Show();
         }

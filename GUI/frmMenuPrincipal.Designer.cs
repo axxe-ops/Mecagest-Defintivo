@@ -33,6 +33,7 @@
             this.gestionTurnosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.fichaIngreso_EgresoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.agendaToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.registrarVehiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionServiciosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.ordenesDeTrabajoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.gestionStockToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -52,7 +53,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.tsslblUsuarioActual = new System.Windows.Forms.ToolStripStatusLabel();
             this.tsslblFecha_Hora = new System.Windows.Forms.ToolStripStatusLabel();
-            this.registrarVehiculoToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.menuStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.SuspendLayout();
@@ -102,6 +102,14 @@
             this.agendaToolStripMenuItem.Name = "agendaToolStripMenuItem";
             this.agendaToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
             this.agendaToolStripMenuItem.Text = "Registrar Cliente";
+            this.agendaToolStripMenuItem.Click += new System.EventHandler(this.agendaToolStripMenuItem_Click);
+            // 
+            // registrarVehiculoToolStripMenuItem
+            // 
+            this.registrarVehiculoToolStripMenuItem.Name = "registrarVehiculoToolStripMenuItem";
+            this.registrarVehiculoToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
+            this.registrarVehiculoToolStripMenuItem.Text = "Registrar Vehiculo";
+            this.registrarVehiculoToolStripMenuItem.Click += new System.EventHandler(this.registrarVehiculoToolStripMenuItem_Click);
             // 
             // gestionServiciosToolStripMenuItem
             // 
@@ -114,7 +122,7 @@
             // ordenesDeTrabajoToolStripMenuItem
             // 
             this.ordenesDeTrabajoToolStripMenuItem.Name = "ordenesDeTrabajoToolStripMenuItem";
-            this.ordenesDeTrabajoToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.ordenesDeTrabajoToolStripMenuItem.Size = new System.Drawing.Size(175, 22);
             this.ordenesDeTrabajoToolStripMenuItem.Text = "Ordenes de Trabajo";
             // 
             // gestionStockToolStripMenuItem
@@ -128,7 +136,7 @@
             // repuestosToolStripMenuItem
             // 
             this.repuestosToolStripMenuItem.Name = "repuestosToolStripMenuItem";
-            this.repuestosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.repuestosToolStripMenuItem.Size = new System.Drawing.Size(128, 22);
             this.repuestosToolStripMenuItem.Text = "Repuestos";
             // 
             // sistemaToolStripMenuItem
@@ -182,21 +190,21 @@
             // gestiónBitacoraToolStripMenuItem
             // 
             this.gestiónBitacoraToolStripMenuItem.Name = "gestiónBitacoraToolStripMenuItem";
-            this.gestiónBitacoraToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
+            this.gestiónBitacoraToolStripMenuItem.Size = new System.Drawing.Size(170, 22);
             this.gestiónBitacoraToolStripMenuItem.Text = "Gestión Bitacora";
             this.gestiónBitacoraToolStripMenuItem.Click += new System.EventHandler(this.gestiónBitacoraToolStripMenuItem_Click);
             // 
             // seguridadToolStripMenuItem2
             // 
             this.seguridadToolStripMenuItem2.Name = "seguridadToolStripMenuItem2";
-            this.seguridadToolStripMenuItem2.Size = new System.Drawing.Size(180, 22);
+            this.seguridadToolStripMenuItem2.Size = new System.Drawing.Size(170, 22);
             this.seguridadToolStripMenuItem2.Text = "Gestión Seguridad";
             this.seguridadToolStripMenuItem2.Click += new System.EventHandler(this.seguridadToolStripMenuItem2_Click);
             // 
             // auditoriaToolStripMenuItem1
             // 
             this.auditoriaToolStripMenuItem1.Name = "auditoriaToolStripMenuItem1";
-            this.auditoriaToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
+            this.auditoriaToolStripMenuItem1.Size = new System.Drawing.Size(170, 22);
             this.auditoriaToolStripMenuItem1.Text = "Auditoria";
             this.auditoriaToolStripMenuItem1.Click += new System.EventHandler(this.auditoriaToolStripMenuItem1_Click);
             // 
@@ -244,12 +252,6 @@
             // 
             this.tsslblFecha_Hora.Name = "tsslblFecha_Hora";
             this.tsslblFecha_Hora.Size = new System.Drawing.Size(0, 17);
-            // 
-            // registrarVehiculoToolStripMenuItem
-            // 
-            this.registrarVehiculoToolStripMenuItem.Name = "registrarVehiculoToolStripMenuItem";
-            this.registrarVehiculoToolStripMenuItem.Size = new System.Drawing.Size(203, 22);
-            this.registrarVehiculoToolStripMenuItem.Text = "Registrar Vehiculo";
             // 
             // frmMenuPrincipal
             // 
