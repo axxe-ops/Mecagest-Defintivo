@@ -76,6 +76,12 @@
     <Compile Include="frmMenuPrincipal.Designer.cs">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </Compile>
+    <Compile Include="frmNegocio\frmGenerarOrdenTrabajo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmNegocio\frmGenerarOrdenTrabajo.Designer.cs">
+      <DependentUpon>frmGenerarOrdenTrabajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="frmNegocio\frmRegistrarCliente.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -94,10 +100,10 @@
     <Compile Include="frmPermisos.Designer.cs">
       <DependentUpon>frmPermisos.cs</DependentUpon>
     </Compile>
-    <Compile Include="frmRegistrarEstadia.cs">
+    <Compile Include="frmNegocio\frmRegistrarEstadia.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="frmRegistrarEstadia.Designer.cs">
+    <Compile Include="frmNegocio\frmRegistrarEstadia.Designer.cs">
       <DependentUpon>frmRegistrarEstadia.cs</DependentUpon>
     </Compile>
     <Compile Include="frmSeguridad.cs">
@@ -129,6 +135,9 @@
     <EmbeddedResource Include="frmMenuPrincipal.resx">
       <DependentUpon>frmMenuPrincipal.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="frmNegocio\frmGenerarOrdenTrabajo.resx">
+      <DependentUpon>frmGenerarOrdenTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="frmNegocio\frmRegistrarCliente.resx">
       <DependentUpon>frmRegistrarCliente.cs</DependentUpon>
     </EmbeddedResource>
@@ -138,7 +147,7 @@
     <EmbeddedResource Include="frmPermisos.resx">
       <DependentUpon>frmPermisos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="frmRegistrarEstadia.resx">
+    <EmbeddedResource Include="frmNegocio\frmRegistrarEstadia.resx">
       <DependentUpon>frmRegistrarEstadia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="frmSeguridad.resx">

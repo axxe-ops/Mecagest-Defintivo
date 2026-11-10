@@ -43,8 +43,9 @@
   <ItemGroup>
     <Compile Include="CLIENTE_BLL.cs" />
     <Compile Include="GESTOR_ESTADIA.cs" />
-    <Compile Include="PERMISO_BLL.cs" />
-    <Compile Include="USUARIO_BLL.cs" />
+    <Compile Include="ORDEN_TRABAJO_BLL.cs" />
+    <Compile Include="Servicio\PERMISO_BLL.cs" />
+    <Compile Include="Servicio\USUARIO_BLL.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

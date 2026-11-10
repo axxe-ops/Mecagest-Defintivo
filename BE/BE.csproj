@@ -41,21 +41,23 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BITACORA.cs" />
+    <Compile Include="EstadoPresupuestada.cs" />
+    <Compile Include="Servicio\BITACORA.cs" />
     <Compile Include="CLIENTE.cs" />
-    <Compile Include="COMPONENTE.cs" />
-    <Compile Include="ETIQUETA.cs" />
+    <Compile Include="Servicio\COMPONENTE.cs" />
+    <Compile Include="Servicio\ETIQUETA.cs" />
     <Compile Include="FICHA.cs" />
-    <Compile Include="IDIOMA.cs" />
-    <Compile Include="IObserverIdioma.cs" />
-    <Compile Include="IVerificarDigitos.cs" />
+    <Compile Include="Servicio\IDIOMA.cs" />
+    <Compile Include="IESTADO_OT.cs" />
+    <Compile Include="Servicio\IObserverIdioma.cs" />
+    <Compile Include="Servicio\IVerificarDigitos.cs" />
     <Compile Include="ORDEN_TRABAJO.cs" />
-    <Compile Include="PermisoCompuesto.cs" />
-    <Compile Include="PermisoSimple.cs" />
-    <Compile Include="TRADUCCION.cs" />
-    <Compile Include="USUARIO.cs" />
+    <Compile Include="Servicio\PermisoCompuesto.cs" />
+    <Compile Include="Servicio\PermisoSimple.cs" />
+    <Compile Include="Servicio\TRADUCCION.cs" />
+    <Compile Include="Servicio\USUARIO.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="USUARIO_MEMENTO.cs" />
+    <Compile Include="Servicio\USUARIO_MEMENTO.cs" />
     <Compile Include="VEHICULO.cs" />
   </ItemGroup>
   <ItemGroup>

@@ -19,7 +19,6 @@ namespace GUI
         {
             InitializeComponent();
         }
-
         private void frmMenuPrincipal_Load(object sender, EventArgs e)
         {
             WindowState = FormWindowState.Maximized;
@@ -34,8 +33,7 @@ namespace GUI
 
 
 
-        //-------------------- BOTONES ------------------------------------
-        
+        //-------------------- BOTONES ------------------------------------        
         private void menúToolStripMenuItem_Click(object sender, EventArgs e)
         { 
             // Menu
@@ -208,6 +206,9 @@ namespace GUI
             tsslblUsuarioActual.Text = "Usuario: " + usuario.ToString();
         }
 
-        
+        private void ordenesDeTrabajoToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }

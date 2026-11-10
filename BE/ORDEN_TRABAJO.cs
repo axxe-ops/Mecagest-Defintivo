@@ -8,6 +8,12 @@ namespace BE
 {
     public class ORDEN_TRABAJO
     {
+        public ORDEN_TRABAJO()
+        {
+            this.EstadoComportamiento = new EstadoPresupuestada();
+            this.Estado = "Presupuestada";
+        }
+
         private int id;
         public int Id
         {
@@ -43,6 +49,13 @@ namespace BE
             set { estado = value; }
         }
 
+        private IESTADO_OT estadoComportamiento;
+        public IESTADO_OT EstadoComportamiento
+        {
+            get { return estadoComportamiento; }
+            set { estadoComportamiento = value; }
+        }
+
         private string detalleFallas;
         public string DetalleFallas
         {
@@ -62,6 +75,24 @@ namespace BE
         {
             get { return costoTotal; }
             set { costoTotal = value; }
+        }
+
+
+        public void AprobarOT()
+        {
+            EstadoComportamiento.Aprobar(this);
+        }
+        public void IniciarReparacionOT()
+        {
+            EstadoComportamiento.IniciarReparacion(this);
+        }
+        public void PagarOT() 
+        {
+            EstadoComportamiento.Pagar(this);
+        }
+        public void EntregarVehiculo()
+        {
+            EstadoComportamiento.Entregar(this);
         }
 
 

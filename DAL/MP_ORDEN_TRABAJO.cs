@@ -17,7 +17,24 @@ namespace DAL
 
         public override void Insertar(ORDEN_TRABAJO obj)
         {
-            throw new NotImplementedException();
+            List<SqlParameter> parametros = new List<SqlParameter>
+            {
+                acceso.CrearParametro("@FallasDetalladas", obj.DetalleFallas),
+                acceso.CrearParametro("@TareasRequeridas", obj.TareasReparacion),
+                acceso.CrearParametro("@CostoTotal", obj.CostoTotal.ToString()),
+                acceso.CrearParametro("@MecanicoAsignado_id", obj.MecanicoAsignado.Id),
+                acceso.CrearParametro("@Estado", obj.Estado),
+                acceso.CrearParametro("@Ficha_Id", obj.Ficha.Id)
+            };
+
+            acceso.Abrir();
+            object resultado = acceso.EjecutarEscalar("sp_InsertarOrdenTrabajo", parametros);
+            acceso.Cerrar();
+
+            if (resultado != null && resultado != DBNull.Value)
+            {
+                obj.Id = Convert.ToInt32(resultado);
+            }
         }
 
         public override List<ORDEN_TRABAJO> Listar()
